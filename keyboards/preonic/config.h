@@ -56,7 +56,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define BACKLIGHT_LEVELS 3
 
 /* Set 0 if debouncing isn't needed */
-#define DEBOUNCING_DELAY 5
+#define DEBOUNCING_DELAY 0
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
@@ -96,17 +96,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PS2_DATA_DDR    DDRD
 #define PS2_DATA_BIT    3
 
-#define PS2_INT_INIT()  do {    \
-    EICRA |= ((1<<ISC21) |      \
-              (0<<ISC20));      \
-} while (0)
-#define PS2_INT_ON()  do {      \
-    EIMSK |= (1<<INT2);         \
-} while (0)
-#define PS2_INT_OFF() do {      \
-    EIMSK &= ~(1<<INT2);        \
-} while (0)
+
+#define PS2_INT_INIT()  do {	 \
+     EICRA |= ((1<<ISC21) |      \
+               (0<<ISC20));      \
+ } while (0)
+#define PS2_INT_ON()  do {	 \
+     EIMSK |= (1<<INT2);         \
+ } while (0)
+#define PS2_INT_OFF() do {	 \
+     EIMSK &= ~(1<<INT2);        \
+ } while (0)
 #define PS2_INT_VECT   INT2_vect
 #endif
+
 
 #endif
